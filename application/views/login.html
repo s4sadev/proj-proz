@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>
+                <img src="C:\Users\aluno\Downloads\Gestao-nr-main\Gestao-nr-main\application\views\errors\imagens\711769-removebg-preview.pngjjlo.png" alt="Logo">
+            </h2>
+            <form action="login.php" method="POST" id="loginForm">
+                <div class="input-group">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+                </div>
+                <div class="input-group">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit">Login</button>
+                <div id="loader" class="loader"></div> 
+                <?php if (isset($_GET['error'])): ?>
+                    <p id="error-message" style="color: red;">Usuário ou senha inválidos!</p>
+                <?php endif; ?>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const loader = document.getElementById("loader");
+
+        form.onsubmit = function() {
+            loader.style.display = "block"; 
+        };
+    </script>
+</body>
+</html>
