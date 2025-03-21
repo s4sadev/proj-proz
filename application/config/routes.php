@@ -27,4 +27,4 @@ $route['login']['get'] = 'Auth_controller/tela_login';
 $route['login']['post'] = 'Auth_controller/verificacao_funcionario';
 
 // //rotas para perfil
-// $route['perfil']['get'] = 'Funcionario_controller/funvionario_perfil;
+$route['perfil']['get'] = 'Funcionarios_controller/funcionario_perfil';

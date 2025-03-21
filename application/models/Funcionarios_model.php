@@ -31,7 +31,12 @@ class Funcionarios_model extends CI_model {
         $this->db->where('id',$id)->delete('funcionarios');
     }
 
-
+    public function get_user($email,$senha){
+        return $this->db->where([
+            'email' => $email,
+            'senha' => $senha
+        ])->get('funcionarios')-> row_array();
+    }
 }
 
 // acessar -> consultar o banco

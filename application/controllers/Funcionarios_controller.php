@@ -3,22 +3,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Funcionarios_controller extends CI_Controller {
     public function listar_funcionarios() {
+      //acessando dados do usuario
+      $user = $this->session->userdata('user');
+      //verificando se tem permissao
+      if($user['tipo'] != 'gestor'){
+        $this->session->set_flashdata('block', 'Voce nao tem permissao para acessar essa pagina');
+        header('Location:perfil');
+      }
+
       // $funcionarios ->  local(dessa pagina)
       $funcionarios = $this->funcionarios->get_all();
-      echo print_r($funcionarios);
+      
       $this->load->view('Funcionarios_view', ['funcionarios' => $funcionarios, 'titulo' => 'Listagem usuarios']);
     }
+
     public function formulario_funcionario(){
       $this->load->view("Adicionar_funcionario_view");
     }
 
     public function add_funcionario (){
       $this->load->library('session');
+      
       $this->session->set_flashdata('sucess', 'Funcionario salvo com Sucesso!');
+
       $dadosFormulario = $this->input->post();  
-      echo '<pre>';
-      echo print_r($dadosFormulario);   
-      echo '</pre>';
+
       $this->funcionarios->insert($dadosFormulario);
       header('Location:' . base_url('funcionarios'));
       exit();
@@ -58,6 +67,18 @@ class Funcionarios_controller extends CI_Controller {
 
       $this->funcionarios->delete_id($funcionarioId);
       header('Location:'. base_url('funcionarios'));
+    }
+
+    public function funcionario_perfil(){
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }
+      $this->load->library('session');
+      $usuario = $this->session->userdata('user_id');
+
+      $this->load->view('Funcionario_perfil_view');
     }
 
 } 

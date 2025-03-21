@@ -12,8 +12,11 @@
         echo $this->session->flashdata('sucess');
         echo '</div>';
     }
-    
+    elseif($this->session->flashdata('block')){
+        echo $this->session->flashdata('block');
+    }    
     ?>
+
     <h1>Listagem de funcionarios</h1>
     <a href="<?= base_url('formulario/funcionario')?>"><button>Adicionar</button></a>
 

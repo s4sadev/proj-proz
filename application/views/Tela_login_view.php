@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <?php
+        if($this->session->flashdata('fail')){
+            echo $this->session->flashdata('fail');
+        }
+    ?>
     <div class="page">
         <form method="post" action="login" class="formLogin">
             <h1>Login</h1>

@@ -7,19 +7,35 @@ class Auth_controller extends CI_Controller {
     }
 
     public function verificacao_funcionario(){
+        $this->load->library('session');
+
+        //pegando dados
         $email = $this->input->post('email');
         $senha = $this-> input-> post('senha');
-        print_r($email);
-        print_r($senha);
+        
 
-        $this->db->get_where('funcionarios', ['id'=>$id]);
-        if($funcionarios){
+        //pegando no banco de dados
+        $funcionario = $this->funcionarios->get_user($email,$senha);
+        
+        // guardando id para uso futuro
+        $this->session->set_userdata('user',array(
+            'id'=> $funcionario['id'],
+            'tipo'=> $funcionario['tipo']
+        ));
+
+        // validando se existe
+        if($funcionario){
+            $this->session->set_flashdata('sucesso',"Logado com sucesso");
             echo "achei func";
             header("location:perfil");
+
         } else {
+            $this->session->set_flashdata('fail',"Credenciais incorretas");
             echo "nao achei";
             header("location:login");
         }
+
     }
+
 }
 
