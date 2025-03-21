@@ -28,3 +28,6 @@ $route['login']['post'] = 'Auth_controller/verificacao_funcionario';
 
 // //rotas para perfil
 $route['perfil']['get'] = 'Funcionarios_controller/funcionario_perfil';
+
+// logout
+$route['sair'] = 'Funcionarios_controller/logout';

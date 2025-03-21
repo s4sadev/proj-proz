@@ -19,16 +19,16 @@
         <input type="text" required name="setor" id="setor"></div>
     <div>
         <label for="cpf">cpf</label> 
-        <input type="text" required name="cpf" id="cpf"></div>
+        <input type="number" required name="cpf" id="cpf"></div>
     <div>
         <label for="email">email</label> 
         <input type="text" required name="email" id="email"></div>
     <div>
         <label for="telefone">telefone</label> 
-        <input type="telefone" required name="telefone" id="telefone"></div>
+        <input type="number" required name="telefone" id="telefone"></div>
     <div>
         <label for="senha">senha</label> 
-        <input type="senha" required name="senha" id="senha"></div>
+        <input type="password" required name="senha" id="senha"></div>
     <div>
         <select name="tipo" id="tipo">
             <option value="comum">comum</option>

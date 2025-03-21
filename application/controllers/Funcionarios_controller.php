@@ -5,6 +5,7 @@ class Funcionarios_controller extends CI_Controller {
     public function listar_funcionarios() {
       //acessando dados do usuario
       $user = $this->session->userdata('user');
+      
       //verificando se tem permissao
       if($user['tipo'] != 'gestor'){
         $this->session->set_flashdata('block', 'Voce nao tem permissao para acessar essa pagina');
@@ -18,11 +19,22 @@ class Funcionarios_controller extends CI_Controller {
     }
 
     public function formulario_funcionario(){
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }
+
       $this->load->view("Adicionar_funcionario_view");
     }
 
     public function add_funcionario (){
-      $this->load->library('session');
+
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }       
       
       $this->session->set_flashdata('sucess', 'Funcionario salvo com Sucesso!');
 
@@ -35,6 +47,12 @@ class Funcionarios_controller extends CI_Controller {
     }
 
     public function edit_funcionario () {
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }
+
       // pegando ID pela url
       $funcionarioId = $this->input->get('id');
 
@@ -45,8 +63,14 @@ class Funcionarios_controller extends CI_Controller {
     }
 
     public function edit_salva(){
-      $this->load->library('session');
-      ob_start();
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }
+
+ 
+
       //pegando dados do formulario
       $dadosFormulario = $this->input->post();
   
@@ -62,6 +86,11 @@ class Funcionarios_controller extends CI_Controller {
     }
 
     public function delete_funcionario(){
+      //bloqueia acesso direto
+      if(!$this->session->userdata('user')){
+        header('Location:login');
+        exit();
+      }
       // // pegando id
       $funcionarioId = $this->input->get('id');
 
@@ -75,10 +104,15 @@ class Funcionarios_controller extends CI_Controller {
         header('Location:login');
         exit();
       }
-      $this->load->library('session');
+       
       $usuario = $this->session->userdata('user_id');
 
       $this->load->view('Funcionario_perfil_view');
+    }
+
+    public function logout(){
+      $this->session->sess_destroy();
+      header('location:login');
     }
 
 } 

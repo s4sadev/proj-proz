@@ -20,7 +20,7 @@
             <label for="email"></label>
             <input name="email" type="email" placeholder="Digite seu e-mail" autofocus="true" />
             <label for="senha">Senha</label>
-            <input type="senha" name="senha" placeholder="Digite sua senha" />
+            <input type="password" name="senha" placeholder="Digite sua senha" />
             <a href="/">Esqueci minha senha</a>
             <input type="submit" value="Acessar" class="btn" />
         </form>

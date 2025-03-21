@@ -13,7 +13,10 @@
         echo '</div>';
     }
     elseif($this->session->flashdata('block')){
+        echo '<div>';
         echo $this->session->flashdata('block');
+        echo '</div>';
+
     }    
     ?>
 
@@ -49,6 +52,8 @@
 
         </tbody>
     </table>
+
+    <a href="<?=base_url('/perfil')?>">Voltar para pagina Inicial</a>
 
 </body>
 </html>     

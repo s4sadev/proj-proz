@@ -29,7 +29,9 @@ class Auth_controller extends CI_Controller {
             echo "achei func";
             header("location:perfil");
 
-        } else {
+        }
+        
+        else {
             $this->session->set_flashdata('fail',"Credenciais incorretas");
             echo "nao achei";
             header("location:login");

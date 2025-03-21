@@ -8,15 +8,21 @@
 <body>
     <?php
         if($this->session->flashdata('sucesso')){
+            echo '<div>';
             echo $this->session->flashdata('sucesso');
+            echo '</div>';
         }
         elseif($this->session->flashdata('block')){
+            echo '<div>';
             echo $this->session->flashdata('block');
+            echo '</div>';
+            
         }
 
     ?>
 
     <a href="funcionarios">Funcionarios</a>
+    <a href="<?= base_url('/sair')?>">Logout</a>
     
 </body>
 </html>

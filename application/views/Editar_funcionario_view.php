@@ -8,7 +8,6 @@
 <body>
 <form action="<?php echo base_url('editar/funcionario/salvar?id='. $funcionario['id'])?>" method="post">
 
-    <?php print_r($funcionario)?>
     <div>
         <label for="nome">nome</label> 
         <input type="text" required name="nome" value="<?=$funcionario['nome'];?>" id="nome">
@@ -23,7 +22,7 @@
     </div>
     <div>
         <label for="cpf">cpf</label> 
-        <input type="text" required name="cpf" value="<?=$funcionario['cpf'];?>" id="cpf">
+        <input type="number" required name="cpf" value="<?=$funcionario['cpf'];?>" id="cpf">
     </div>
     <div>
         <label for="email">email</label> 
@@ -31,11 +30,11 @@
     </div>
     <div>
         <label for="telefone">telefone</label> 
-        <input type="telefone" required name="" value="<?=$funcionario['telefone'];?>" id="telefone">
+        <input type="number" required name="" value="<?=$funcionario['telefone'];?>" id="telefone">
     </div>
     <div>
         <label for="senha">senha</label> 
-        <input type="senha" required name="senha" value="<?=$funcionario['senha'];?>" id="senha">
+        <input type="password" required name="senha" value="<?=$funcionario['senha'];?>" id="senha">
     </div>
     <div>
         <label for="tipo">tipo</label> 
