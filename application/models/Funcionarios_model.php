@@ -16,14 +16,20 @@ class Funcionarios_model extends CI_model {
 
     // pegar os dados de um funcionario pela id
     public function get_id($table, $id) {
-        return $this->db->get_where($table, array('id' => $id))-> row_array();
+        return $this->db->get_where($table, array('id' => $id))-> row_array(); // SELECT * FROM tabela WHERE campo = valor;
+
 
     }
 
-    // public function update($dado){
-    //     $this->db->get(funcio)
-    // }
+    public function update_data($id, $dado){
+        $this->db->where('id', $id)->update('funcionarios', $dado);
+        // SELECT * FROM tabela WHERE campo = valor;
 
+    }
+
+    public function delete_id($id){
+        $this->db->where('id',$id)->delete('funcionarios');
+    }
 
 
 }

@@ -13,17 +13,51 @@ class Funcionarios_controller extends CI_Controller {
     }
 
     public function add_funcionario (){
-      $dadosFormulario = $this->input->post;
-      $this->funcionarios->insert($dadosFuncionario);
-      header("location:funcionario");
+      $this->load->library('session');
+      $this->session->set_flashdata('sucess', 'Funcionario salvo com Sucesso!');
+      $dadosFormulario = $this->input->post();  
+      echo '<pre>';
+      echo print_r($dadosFormulario);   
+      echo '</pre>';
+      $this->funcionarios->insert($dadosFormulario);
+      header('Location:' . base_url('funcionarios'));
+      exit();
 
     }
 
     public function edit_funcionario () {
+      // pegando ID pela url
       $funcionarioId = $this->input->get('id');
-      echo $funcionarioId;
+
+      // pegando dados anteriores do funcionario
       $funcionarioDados = $this->funcionarios->get_id("funcionarios", $funcionarioId);
+      
       $this->load->view("Editar_funcionario_view" ,['funcionario' => $funcionarioDados]);
+    }
+
+    public function edit_salva(){
+      $this->load->library('session');
+      ob_start();
+      //pegando dados do formulario
+      $dadosFormulario = $this->input->post();
+  
+      // // pegando id
+      $funcionarioId = $this->input->get('id');
+
+      // // salvando
+      $this->funcionarios->update_data($funcionarioId, $dadosFormulario);
+      // print_r($dadosFormulario);
+
+      header('Location:'. base_url('funcionarios'));
+
+    }
+
+    public function delete_funcionario(){
+      // // pegando id
+      $funcionarioId = $this->input->get('id');
+
+      $this->funcionarios->delete_id($funcionarioId);
+      header('Location:'. base_url('funcionarios'));
     }
 
 } 

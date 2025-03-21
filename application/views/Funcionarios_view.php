@@ -6,9 +6,16 @@
     <title><?= $titulo ?></title>
 </head>
 <body> 
-
+    <?php
+    if($this->session->flashdata('sucess')){
+        echo '<div>';
+        echo $this->session->flashdata('sucess');
+        echo '</div>';
+    }
+    
+    ?>
     <h1>Listagem de funcionarios</h1>
-    <a href="formulario-funcionario"><button>Adicionar</button></a>
+    <a href="<?= base_url('formulario/funcionario')?>"><button>Adicionar</button></a>
 
     <table border = 3>
         <thead>
@@ -31,8 +38,8 @@
                 <td><?= $funcionario['setor'] ?></td>
                 
                 <td>
-                <button >Apagar</button>
-                <a href="<?= 'edita-funcionario?id='. $funcionario['id'] ?>">editar</a>
+                <button><a href="<?php echo base_url('remove/funcionario?id='. $funcionario['id' ])?>" >Apagar</a></button>    
+                <button><a href="<?php echo base_url('editar/funcionario?id='. $funcionario['id' ])?>">editar</a></button>
                 </td>
             </tr>
     <?php } ?>

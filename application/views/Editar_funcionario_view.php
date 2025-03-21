@@ -6,7 +6,7 @@
     <title>POUTRA COISA</title>
 </head>
 <body>
-<form action="" method="get">
+<form action="<?php echo base_url('editar/funcionario/salvar?id='. $funcionario['id'])?>" method="post">
 
     <?php print_r($funcionario)?>
     <div>
@@ -46,10 +46,9 @@
     </div>
     </div>
     <div>
-        <button type="button">Salvar</button>
-        <button type="button">Cancelar</button>        
+        <button type="submit">Salvar</button>
+        <button><a href="<?=base_url('funcionarios')?>">Cancelar</a></button>        
     </div>
-
 
     </form>
 </body>

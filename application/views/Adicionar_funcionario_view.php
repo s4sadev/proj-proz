@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="salva-funcionario" method="post">
+    <form action="<?= base_url('salva/funcionario')?>" method="post">
     <div>
         <label for="nome">nome</label> 
         <input type="text" required name="nome" id="nome"></div>
@@ -25,7 +25,7 @@
         <input type="text" required name="email" id="email"></div>
     <div>
         <label for="telefone">telefone</label> 
-        <input type="telefone" required name="" id="telefone"></div>
+        <input type="telefone" required name="telefone" id="telefone"></div>
     <div>
         <label for="senha">senha</label> 
         <input type="senha" required name="senha" id="senha"></div>
@@ -36,7 +36,7 @@
         </select>
 
         <button type="submit">Adicionar</button>
-        <button type="submit">Apagar</button>
+        <button type="submit"><a href="<?=base_url('funcionarios')?>">Cancelar</a></button>
 
     </form>
 </body>

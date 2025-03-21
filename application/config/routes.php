@@ -5,13 +5,23 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Funcionarios
+// GET
 $route['funcionarios']['get'] = 'Funcionarios_controller/listar_funcionarios';
-$route['formulario_funcionario']['get'] = 'Funcionarios_controller/formulario_funcionario';
-$route['salva-funcionario']['post'] = 'Funcionarios_controller/add_funcionario';
-//editar
-$route['edita-funcionario']['get'] = 'Funcionarios_controller/edit_funcionario';
+
+// CREATE
+$route['formulario/funcionario']['get'] = 'Funcionarios_controller/formulario_funcionario';
+$route['salva/funcionario']['post'] = 'Funcionarios_controller/add_funcionario';
+
+//UPDADE
+$route['editar/funcionario']['get'] = 'Funcionarios_controller/edit_funcionario';
+$route['editar/funcionario/salvar']['post'] = 'Funcionarios_controller/edit_salva';
+
 // $route['editar-funcionario']['post'] = 'Funcionarios_controller/edit_funcionario';
+
+//DELETE
+$route['remove/funcionario']['get'] = 'Funcionarios_controller/delete_funcionario';
+
+
 //verifica login
 $route['login']['get'] = 'Auth_controller/tela_login';
 $route['login']['post'] = 'Auth_controller/verificacao_funcionario';
