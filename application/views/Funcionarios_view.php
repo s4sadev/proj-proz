@@ -26,7 +26,6 @@
     <table border = 3>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Cargo</th>
@@ -37,12 +36,10 @@
         <tbody>
             <tr>
             <?php foreach($funcionarios as $funcionario) { ?>
-                <td><?= $funcionario['id'] ?></td>
                 <td><?= $funcionario['nome'] ?></td>
                 <td><?= $funcionario['email'] ?></td>
                 <td><?= $funcionario['cargo'] ?></td>
                 <td><?= $funcionario['setor'] ?></td>
-                
                 <td>
                 <button><a href="<?php echo base_url('remove/funcionario?id='. $funcionario['id' ])?>" >Apagar</a></button>    
                 <button><a href="<?php echo base_url('editar/funcionario?id='. $funcionario['id' ])?>">editar</a></button>

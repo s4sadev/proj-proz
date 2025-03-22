@@ -57,7 +57,7 @@ class Funcionarios_controller extends CI_Controller {
       $funcionarioId = $this->input->get('id');
 
       // pegando dados anteriores do funcionario
-      $funcionarioDados = $this->funcionarios->get_id("funcionarios", $funcionarioId);
+      $funcionarioDados = $this->funcionarios->get_id($funcionarioId);
       
       $this->load->view("Editar_funcionario_view" ,['funcionario' => $funcionarioDados]);
     }
@@ -101,13 +101,18 @@ class Funcionarios_controller extends CI_Controller {
     public function funcionario_perfil(){
       //bloqueia acesso direto
       if(!$this->session->userdata('user')){
+        
         header('Location:login');
         exit();
       }
        
-      $usuario = $this->session->userdata('user_id');
+      $usuarioId = $this->session->userdata('user')['id'];
 
-      $this->load->view('Funcionario_perfil_view');
+      $userData = $this->funcionarios->get_id($usuarioId); 
+      print_r($userData);
+
+
+      $this->load->view('Funcionario_perfil_view', ['funcionario'=> $userData]);
     }
 
     public function logout(){

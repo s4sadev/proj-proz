@@ -7,7 +7,9 @@
 </head>
 <body>
 <form action="<?php echo base_url('editar/funcionario/salvar?id='. $funcionario['id'])?>" method="post">
-
+    <?php
+        print_r($funcionario)
+    ?>
     <div>
         <label for="nome">nome</label> 
         <input type="text" required name="nome" value="<?=$funcionario['nome'];?>" id="nome">
@@ -39,8 +41,8 @@
     <div>
         <label for="tipo">tipo</label> 
         <select name="tipo" id="tipo" value="gestor">
-            <option value="comum" <?php if($funcionario['tipo'] == 'comum'){ echo 'selected';}?>>comum</option>
-            <option value="gestor" <?php if($funcionario['tipo'] == 'gestor'){ echo 'selected';}?>>gestor</option>
+            <option value="comum" <?php if($funcionario['tipo'] === 'comum'){ echo 'selected';}?>>comum</option>
+            <option value="gestor" <?php if($funcionario['tipo'] === 'gestor'){ echo 'selected';}?>>gestor</option>
         </select>
     </div>
     </div>

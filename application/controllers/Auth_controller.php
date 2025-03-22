@@ -18,19 +18,19 @@ class Auth_controller extends CI_Controller {
         $funcionario = $this->funcionarios->get_user($email,$senha);
         
         // guardando id para uso futuro
-        $this->session->set_userdata('user',array(
-            'id'=> $funcionario['id'],
-            'tipo'=> $funcionario['tipo']
-        ));
 
         // validando se existe
         if($funcionario){
+            $this->session->set_userdata('user',array(
+                'id'=> $funcionario['id'],
+                'tipo'=> $funcionario['tipo']
+            )); 
             $this->session->set_flashdata('sucesso',"Logado com sucesso");
             echo "achei func";
             header("location:perfil");
 
         }
-        
+
         else {
             $this->session->set_flashdata('fail',"Credenciais incorretas");
             echo "nao achei";
