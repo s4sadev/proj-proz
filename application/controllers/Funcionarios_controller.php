@@ -15,7 +15,7 @@ class Funcionarios_controller extends CI_Controller {
       // $funcionarios ->  local(dessa pagina)
       $funcionarios = $this->funcionarios->get_all();
       
-      $this->load->view('Funcionarios_view', ['funcionarios' => $funcionarios, 'titulo' => 'Listagem usuarios']);
+      $this->load->view('Funcionarios_view', ['funcionarios' => $funcionarios, 'userId' => ($this->session->userdata('user')['id'])]);
     }
 
     public function formulario_funcionario(){
