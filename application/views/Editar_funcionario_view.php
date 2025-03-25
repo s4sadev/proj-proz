@@ -142,8 +142,8 @@
             <div class="form-group">
                 <label for="tipo">Tipo</label>
                 <select name="tipo" id="tipo">
-                    <option value="comum" <?= $funcionario['tipo'] === 'comum' ? 'selected' : '' ?>>Comum</option>
-                    <option value="gestor" <?= $funcionario['tipo'] === 'gestor' ? 'selected' : '' ?>>Gestor</option>
+                <option value="comum" <?php if($funcionario['tipo'] === 'comum'){ echo 'selected';}?>>comum</option>
+                <option value="gestor" <?php if($funcionario['tipo'] === 'gestor'){ echo 'selected';}?>>gestor</option>
                 </select>
             </div>
             <div class="button-container">

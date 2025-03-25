@@ -166,7 +166,7 @@
                         <td><?= $funcionario['setor'] ?></td>
                         <td class="action-buttons">
                             <a href="<?= base_url('editar/funcionario?id='. $funcionario['id']) ?>" class="edit-button"><i class="fas fa-edit"></i> Editar</a>
-                            <a href="<?= base_url('remove/funcionario?id='. $funcionario['id']) ?>" class="delete-button"><i class="fas fa-trash-alt"></i> Apagar</a>
+                            <a href="<?php if($userId === $funcionario['id']){echo base_url('/funcionarios');}else{echo base_url('/remove/funcionario?id=' . $funcionario['id']);}?>" class="delete-button"><i class="fas fa-trash-alt"></i> Apagar</a>
                         </td>
                     </tr>
                 <?php } ?>
